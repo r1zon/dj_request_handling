@@ -5,12 +5,13 @@ class DateConverter:
     regex = '[0-9]{4}-[0-9]{2}-[0-9]{2}'
 
     def to_python(self, value: str) -> datetime:
-        return datetime.strptime(value, "%Y-%m-%d")
+        print('to_python', value)
+        return datetime.strptime(value, "%Y-%m-%d").date()
 
     def to_url(self, value: datetime) -> str:
+        print('to_url', value)
         return value.strftime("%Y-%m-%d")
 
-# Определите и зарегистрируйте конвертер для определения даты в урлах и наоборот урла по датам
 from app.views import file_list, file_content
 
 register_converter(DateConverter, 'dt')
